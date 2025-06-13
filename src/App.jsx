@@ -207,7 +207,7 @@ const languages = [
 
 export default function App() {
   return (
-    <div style={{ padding: 32, fontFamily: "sans-serif", maxWidth: "100vw" }}>
+    <div style={{ padding: 32, paddingRight: 0, fontFamily: "sans-serif", maxWidth: "100vw" }}>
       <h1 class="title">Cocaine Anonymous Logo Finder</h1>
       <h4 class="subtitle">Click an image to view it, then download it.</h4>
 

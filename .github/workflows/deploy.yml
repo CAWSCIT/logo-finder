@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
 
       - name: Clean build output
         run: rm -rf dist
@@ -26,6 +26,12 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: List build output
+        run: ls -lhR dist
+
+      - name: Check index.html
+        run: test -f dist/index.html && echo "index.html exists" || (echo "index.html missing!" && exit 1)
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
