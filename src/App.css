@@ -1,0 +1,30 @@
+.title, .subtitle {
+  text-align: center;
+}
+
+.image-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;       /* Space between images */
+  padding-bottom: 8px;
+  scrollbar-color: #ccc #f8f8f8; /* optional: for visible scrollbar on Firefox */
+}
+.image-row::-webkit-scrollbar {
+  height: 10px;    /* for Chrome/Safari/Edge */
+}
+.image-row::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 5px;
+}
+
+.transparent-bg {
+  background:
+    linear-gradient(45deg, rgba(204,204,204,0.5) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(204,204,204,0.5) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(204,204,204,0.5) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(204,204,204,0.5) 75%);
+  background-size: 12px 12px;
+  background-position: 0 0, 0 12px, 12px -12px, -12px 0px;
+  background-color: rgba(255,255,255,0.5);
+  background-color: #eee;
+}
