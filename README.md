@@ -27,14 +27,14 @@ source .venv/bin/activate
 # Python requirements
 pip install -r requirements.txt
 
-# Convert pdf to png
-python convernt_pdf.py
+# Convert pdf to png and re-create the image list dynamically.
+python convert_pdf.py
 ```
 
 Commit the new .png files. Push to `main` to deploy.
 
 * * *
-**Note**: Please follow the existing naming convention of all the pdf and png files.
+> **Note**: Please follow the existing naming convention of all the pdf files.
 * * *
 
 ### Adding a new language
