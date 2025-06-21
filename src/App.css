@@ -4,6 +4,13 @@
   padding: 0;
 }
 
+.__react_modal_image__modal_container {
+  background-color: rgba(0,0,0,0.25) !important;
+  /* Blur background */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
 .title, .subtitle {
   text-align: center;
 }
@@ -33,4 +40,10 @@
   background-position: 0 0, 0 12px, 12px -12px, -12px 0px;
   background-color: rgba(255,255,255,0.5);
   background-color: #eee;
+
+  width: "100%";
+  height: 120;
+  object-fit: "contain";
+  background: "#fff";
+  display: "block";
 }

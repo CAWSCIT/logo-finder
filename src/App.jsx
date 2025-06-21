@@ -38,8 +38,8 @@ const languages = [
 export default function App() {
   return (
     <div style={{ padding: 32, paddingRight: 0, fontFamily: "sans-serif", maxWidth: "100vw" }}>
-      <h1 class="title">Cocaine Anonymous Logo Finder</h1>
-      <h4 class="subtitle">Click an image to view it, then download it.</h4>
+      <h1 className="title">Cocaine Anonymous Logo Finder</h1>
+      <h4 className="subtitle">Click an image to view it, then download it.</h4>
 
       {languages.map((lang) =>
         grouped[lang] ? (
@@ -75,13 +75,6 @@ export default function App() {
                       className="transparent-bg"
                       imageBackgroundColor="transparent"
                       loading="lazy"
-                      style={{
-                        width: "100%",
-                        height: 120,
-                        objectFit: "contain",
-                        background: "#eee",
-                        display: "block",
-                      }}
                     />
                     <div
                       style={{
