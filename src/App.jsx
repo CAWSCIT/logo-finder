@@ -33,6 +33,7 @@ const languages = [
   "German",
   "Thai",
   "Russian",
+  "Polish",
 ];
 
 export default function App() {
