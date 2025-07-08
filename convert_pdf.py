@@ -5,6 +5,7 @@ import json
 import subprocess
 from pathlib import Path
 import shutil
+from PIL import Image
 
 def convert_pdf_with_transparency(pdf_path, output_dir):
     """
@@ -59,6 +60,7 @@ def convert_pdf_with_transparency(pdf_path, output_dir):
             try: f.unlink()
             except Exception: pass
 
+
 def main():
     # Project root is where this script is located
     project_root = Path(__file__).resolve().parent
@@ -77,6 +79,55 @@ def main():
                 pdf_path = Path(root) / filename
                 print(f'Converting {pdf_path}')
                 convert_pdf_with_transparency(pdf_path, output_dir)
+
+
+
+def generate_thumbnails(size=(400, 410)):
+    """
+    Walks every PNG in img_root and writes a 400×410 thumbnail
+    to img_root/thumbnail/, keeping the same filename.
+    """
+    project_root = Path(__file__).resolve().parent
+
+    # Get the image root directory
+    img_root = project_root / "public" / "img"
+    img_root   = Path(img_root)
+
+    # Create the thumbnail directory if it doesn't exist
+    thumb_root = img_root / "thumbnail"
+    thumb_root.mkdir(parents=True, exist_ok=True)
+
+    for png in img_root.rglob("*.png"):
+        if thumb_root in png.parents:               # skip thumbnails themselves
+            continue
+
+        rel      = png.relative_to(img_root)       # keep sub-folder structure
+        out_path = thumb_root / rel
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+
+        try:
+            with Image.open(png) as im:
+                # Preserve transparency + good quality down-scaling
+                im.thumbnail(size, Image.Resampling.LANCZOS)
+
+                # ---- palette & compression tweaks ----
+                if im.mode == "RGBA":
+                    # keep transparency, but use a smaller palette
+                    im = im.quantize(colors=256, method=Image.FASTOCTREE)  # or Image.LIBIMAGEQUANT
+                else:
+                    # no alpha → RGB + median-cut is fine
+                    im = im.convert("RGB").quantize(colors=256, method=Image.MEDIANCUT)
+
+
+                out_path = out_path.with_suffix(".png")    # stick with png extension
+                im.save(out_path,
+                        format="PNG",
+                        optimize=True,     # better compression
+                        compress_level=9)  # 0 fastest, 9 smallest
+
+            print(f"✓ {out_path}")
+        except Exception as e:
+            print(f"✗ {png} – {e}")
 
 
 def get_new_list():
@@ -108,4 +159,5 @@ def get_new_list():
 
 if __name__ == '__main__':
     main()
+    generate_thumbnails()
     get_new_list()

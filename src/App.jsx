@@ -72,7 +72,7 @@ export default function App() {
                     }}
                   >
                     <ModalImage
-                      small={`${import.meta.env.BASE_URL}img/${file}`}
+                      small={`${import.meta.env.BASE_URL}img/thumbnail/${file}`}
                       large={`${import.meta.env.BASE_URL}img/${file}`}
                       alt={file}
                       className="transparent-bg"
