@@ -15,6 +15,22 @@
   text-align: center;
 }
 
+.image-container {
+  min-width: 200px;
+  max-width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  background: #fff;
+  overflow: hidden;
+  text-align: center;
+}
+
+.image-caption {
+  font-size: 12px;
+  padding: 6px;
+  white-space: normal;
+}
+
 .image-row {
   display: flex;
   overflow-x: auto;
@@ -41,9 +57,32 @@
   background-color: rgba(255,255,255,0.5);
   background-color: #eee;
 
-  width: "100%";
-  height: 120;
-  object-fit: "contain";
-  background: "#fff";
-  display: "block";
+  width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.download-buttons {
+  display: flex;
+  justify-content: center;
+  background-color: #00594F;
+}
+
+.download-buttons a {
+  color: white;
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+.download-buttons a:hover {
+  background-color: #00796B;
+}
+
+.icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  vertical-align: middle;
+  color: white;
 }

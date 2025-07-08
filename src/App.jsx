@@ -1,4 +1,6 @@
 import ModalImage from "react-modal-image";
+import { ArrowDownTrayIcon } from '@heroicons/react/24/outline'
+
 import './App.css'
 import imageList from './image_list.js';
 
@@ -61,15 +63,7 @@ export default function App() {
                 {grouped[lang].map((file) => (
                   <div
                     key={file}
-                    style={{
-                      minWidth: 200,
-                      maxWidth: 200,
-                      borderRadius: 10,
-                      boxShadow: "0 2px 6px rgba(0,0,0,0.07)",
-                      background: "#fff",
-                      overflow: "hidden",
-                      textAlign: "center",
-                    }}
+                    className="image-container"
                   >
                     <ModalImage
                       small={`${import.meta.env.BASE_URL}img/thumbnail/${file}`}
@@ -79,17 +73,21 @@ export default function App() {
                       imageBackgroundColor="transparent"
                       loading="lazy"
                     />
-                    <div
-                      style={{
-                        fontSize: 12,
-                        padding: 6,
-                        whiteSpace: "normal",
-                      }}
+                    {/* <div
+                      className="image-caption"
                     >
                       {file
                         .replace(`${lang} - `, "")
                         .replace(".png", "")
                         .replace(/-/g, "–")}
+                    </div> */}
+                    <div className="download-buttons">
+                      <a href={`${import.meta.env.BASE_URL}img/${file}`} download>
+                        Image <ArrowDownTrayIcon className="icon" />
+                      </a>
+                      <a href={`${import.meta.env.BASE_URL}pdf/${file.replace(".png", ".pdf")}`} download>
+                        PDF <ArrowDownTrayIcon className="icon" />
+                      </a>
                     </div>
                   </div>
                 ))}
