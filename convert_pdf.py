@@ -66,7 +66,7 @@ def main():
     project_root = Path(__file__).resolve().parent
 
     # PDFs live here:
-    pdf_dir = project_root / 'src' / 'pdf'
+    pdf_dir = project_root / 'public' / 'pdf'
 
     # Output images go here:
     output_dir = project_root / 'public' / 'img'
@@ -79,7 +79,6 @@ def main():
                 pdf_path = Path(root) / filename
                 print(f'Converting {pdf_path}')
                 convert_pdf_with_transparency(pdf_path, output_dir)
-
 
 
 def generate_thumbnails(size=(400, 410)):
