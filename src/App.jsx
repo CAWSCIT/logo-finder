@@ -34,6 +34,8 @@ const languages = [
   "Thai",
   "Russian",
   "Polish",
+  "Gaelic",
+  "Norwegian",
 ];
 
 export default function App() {
