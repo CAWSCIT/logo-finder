@@ -1,7 +1,18 @@
+#root {
+  width: 100%;
+  padding-top: 2rem;
+  font-family: sans-serif;
+  max-width: 100vw;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.active-navlink {
+  font-weight: bold;
 }
 
 .__react_modal_image__modal_container {
@@ -85,4 +96,16 @@
   height: 1.2rem;
   vertical-align: middle;
   color: white;
+}
+
+/** Logos **/
+.logos {
+  padding: 32px 0 32px 32px;
+}
+
+/** Brand guidelines page **/
+.brand-guidelines {
+  max-width: 768px;
+  margin: 60px auto 0;
+  padding: 16px;
 }
