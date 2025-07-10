@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes, Route, Outlet, NavLink } from "react-router-dom";
+import { HashRouter, Routes, Route, Outlet, NavLink } from "react-router-dom";
 
 import Logos from "./components/Logos";
 import BrandGuidelines from "./components/BrandGuidelines";
@@ -31,9 +31,9 @@ export function TabsLayout() {
 
 export default function App() {
   return (
-    <BrowserRouter basename="/logo-finder">
+    <HashRouter>
       <Routes>
-        {/* Layout route wraps all tab pages */}
+        {/* Route wrapper for tabbed layout */}
         <Route path="/" element={<TabsLayout />}>
           <Route index element={<Logos />} />
           <Route path="brand-guidelines" element={<BrandGuidelines />} />
@@ -41,6 +41,6 @@ export default function App() {
 
         {/* …other non-tab routes… */}
       </Routes>
-    </BrowserRouter>
-  )
+    </HashRouter>
+  );
 }
