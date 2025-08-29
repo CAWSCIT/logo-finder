@@ -28,7 +28,6 @@ export const languages = [
   "Portuguese",
   "Swedish",
   "Welsh",
-  "Italian",
   "Farsi",
   "German",
   "Thai",
