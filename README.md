@@ -1,12 +1,15 @@
 # Cocaine Anonymous Logo Finder
-> Many C.A. members, groups and areas use the incorrect C.A. logo. Now they don't have to. This is a full gallery of every appproved C.A. logo.
+> Official and approved C.A. Logos in various languages.
 
-### Demo
-[Demo here](https://cawscit.github.io/logo-finder/). It's not really a demo, it's the live website.
+## Website
+To view all the logos in every language and variation, please view the website at [https://cawscit.github.io/logo-finder/](https://cawscit.github.io/logo-finder/).
 
-### Technology:
+---
+
+## Technology:
 - [x] React.js
 - [x] Vite
+- [x] Python
 
 ### Installation and build:
 ```
@@ -18,7 +21,7 @@ npm run build
 .pdf's or .png's, that is the question? In this project we use `.pdf` files as the source of truth. We create transparent `.png` files based off of the `.pdf` files with a script.
 
 ### Adding a new logo
-Add the `.pdf` file to `src/pdf` and then run the Python script:
+Add the `.pdf` file to `public/pdf` and then run the Python script:
 ```python
 # Python environment
 python -m venv .venv
@@ -33,13 +36,18 @@ python convert_pdf.py
 
 Commit the new .png files. Push to `main` to deploy.
 
-* * *
-> **Note**: Please follow the existing naming convention of all the pdf files.
-* * *
+> **Note**: This is an open source repository, but pull requests may not be approved.
 
-### Adding a new language
-Adding a new language requires adding the language to `languages` and _all_ the files to `imageFiles`. You do this inside the App.jsx file. These are simple JavaScript Arrays of strings.
+### File naming convention
+> This is _very_ important to follow.
 
-### Deployment:
-Push a change to the `main` branch and GitHub pages will auto-deploy in about 3 minutes.
+File naming is very important. We follow this structure:
+```
+{Language} - {Color} Outline - {Color} Background - {Inner/Outer} {TM/R}.pdf
+```
 
+Some examples would be:
+```
+English - White Outline - Green Background - Inner R.pdf
+Danish - Green Outline - White Background - Outer TM.pdf
+```
