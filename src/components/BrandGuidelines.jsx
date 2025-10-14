@@ -7,7 +7,7 @@ export default function BrandGuidelines() {
     <div className="brand-guidelines">
         <h2>Brand Guidelines</h2>
         <p style={{ marginTop: 10 }}>Useful tips and tricks for using the Cocaine Anonymous logo the <em>proper</em> way.</p>
-        <p style={{ marginTop: 10 }}><a href="https://pi.ca.org/wp-content/uploads/2022/12/CA-Brand-Guide-2022.2_.pdf" target="_blank">Click here</a> to see the official Brand Guidelines document.</p>
+        <p style={{ marginTop: 10 }}><a href="https://pi.ca.org/wp-content/uploads/2025/10/2025-C.A.-BrandGuidelines.pdf" target="_blank">Click here</a> to see the official Brand Guidelines document.</p>
 
         <p style={{ marginTop: 10 }}><strong>General Guidelines:</strong></p>
         <ul style={{ marginLeft: 30 }}>
