@@ -58,12 +58,24 @@ function resolveBaseUrl(element) {
 }
 
 /*
- * Embedded, the grid should sit flush inside whatever content column the host
- * page gives it rather than carrying the standalone site's 32px gutter. The
- * host page can still override it:
+ * Defaults applied to the container element itself.
+ *
+ * `min-width: 0` matters: if the host page drops the container inside a flex or
+ * grid parent (Breakdance, Elementor and friends do this routinely), the
+ * container inherits `min-width: auto` and refuses to shrink below its
+ * max-content width. It then stretches to the width of the widest logo row, so
+ * the rows have nothing to scroll and simply get clipped by the page.
+ *
+ * Padding is dropped so the grid sits flush in whatever content column it is
+ * given. The host page can still override any of this:
  *   #ca-logo-app { --ca-logos-padding: 24px; }
  */
-const HOST_DEFAULTS = `:host { --ca-logos-padding: 0 0 8px; display: block; }`;
+const HOST_DEFAULTS = `:host {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  --ca-logos-padding: 0 0 8px;
+}`;
 
 function createShadowRoot(host) {
   const shadow = host.attachShadow({ mode: "open" });

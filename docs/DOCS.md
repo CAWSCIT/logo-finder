@@ -110,6 +110,29 @@ container (the container wins):
 <script src="https://example.org/assets/build.js"></script>
 ```
 
+### If the rows don't scroll
+
+The container must be allowed to be narrower than its contents. If the host page
+puts it inside a **flex or grid parent** (Breakdance, Elementor and similar page
+builders do this), it inherits `min-width: auto`, stretches to the width of the
+widest logo row and the rows get clipped instead of scrolling.
+
+The widget sets `min-width: 0` on itself to prevent this. If a page overrides it,
+add this to the page:
+
+```html
+<style>
+  #ca-logo-app { min-width: 0; max-width: 100%; }
+</style>
+```
+
+To confirm this is the problem, check whether the container is wider than the
+viewport:
+
+```js
+document.querySelector("#ca-logo-app").getBoundingClientRect().width
+```
+
 ### Other options
 
 Any element with `id="ca-logo-app"` or a `data-ca-logo-app` attribute is mounted
