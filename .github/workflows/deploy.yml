@@ -40,6 +40,9 @@ jobs:
       - name: Check index.html
         run: test -f dist/index.html && echo "index.html exists" || (echo "index.html missing!" && exit 1)
 
+      - name: Check embeddable build.js
+        run: test -f dist/build.js && echo "build.js exists" || (echo "build.js missing!" && exit 1)
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:

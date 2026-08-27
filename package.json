@@ -6,15 +6,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run build:site && npm run build:embed",
+    "build:site": "vite build",
+    "build:embed": "vite build --config vite.embed.config.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@heroicons/react": "^2.2.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-modal-image": "^2.6.0",
     "react-router-dom": "^7.6.3"
   },
   "devDependencies": {

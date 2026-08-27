@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { languages } from "./Logos";
+import { languages } from "../logos/languages.js";
 
 
 export default function BrandGuidelines() {

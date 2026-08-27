@@ -1,0 +1,226 @@
+/*
+ * Styles for the logo browser and its lightbox.
+ *
+ * Everything is scoped under .ca-logos / .ca-lightbox and every property the
+ * layout depends on is stated explicitly, so this file is safe to drop into a
+ * host page (or a Shadow DOM) without inheriting or leaking anything.
+ */
+
+.ca-logos,
+.ca-logos *,
+.ca-lightbox,
+.ca-lightbox * {
+  box-sizing: border-box;
+}
+
+/* Both knobs can be overridden from the host page, e.g.
+   #ca-logo-app { --ca-logos-padding: 24px; --ca-logo-font: Arial, sans-serif; } */
+.ca-logos {
+  padding: var(--ca-logos-padding, 32px 0 32px 32px);
+  font-family: var(--ca-logo-font, inherit);
+  line-height: 1.5;
+  text-align: left;
+}
+
+.ca-logos__group {
+  margin: 0 0 40px;
+  padding: 0;
+}
+
+.ca-logos__group:last-child {
+  margin-bottom: 0;
+}
+
+.ca-logos__heading {
+  margin: 0 0 16px;
+  padding: 0;
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 1.5;
+  color: inherit;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.ca-logos__row {
+  display: flex;
+  gap: 12px;
+  padding: 0 0 8px;
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-color: #ccc #f8f8f8; /* Firefox */
+}
+
+.ca-logos__row::-webkit-scrollbar {
+  height: 10px;
+}
+
+.ca-logos__row::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 5px;
+}
+
+.ca-logos__card {
+  flex: 0 0 auto;
+  min-width: 200px;
+  max-width: 200px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  background: #fff;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Checkerboard so transparent logos stay visible. */
+.ca-logos__thumb {
+  background-image:
+    linear-gradient(45deg, rgba(204, 204, 204, 0.5) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(204, 204, 204, 0.5) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(204, 204, 204, 0.5) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(204, 204, 204, 0.5) 75%);
+  background-size: 12px 12px;
+  background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+  background-color: #eee;
+
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.ca-logos__downloads {
+  display: flex;
+  justify-content: center;
+  background-color: #00594f;
+}
+
+.ca-logos__downloads a {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: 0;
+  color: #fff;
+  background: none;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.ca-logos__downloads a:hover,
+.ca-logos__downloads a:focus {
+  color: #fff;
+  background-color: #00796b;
+  text-decoration: none;
+}
+
+.ca-logos__icon {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+  color: #fff;
+}
+
+/* ---------------------------------------------------------------- lightbox */
+
+.ca-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  touch-action: none;
+  overflow: hidden;
+  font-family: var(--ca-logo-font, inherit);
+}
+
+.ca-lightbox__content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.ca-lightbox__spinner,
+.ca-lightbox__img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.ca-lightbox__img--fit {
+  max-width: 98%;
+  max-height: 98%;
+  background-color: transparent;
+}
+
+.ca-lightbox__img--zoomed {
+  max-width: none;
+  max-height: none;
+  cursor: move;
+  background-color: transparent;
+}
+
+.ca-lightbox__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+.ca-lightbox__menu {
+  display: inline-block;
+  float: right;
+}
+
+.ca-lightbox__menu a {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 5px;
+  margin-left: 10px;
+  border: none;
+  font-size: 40px;
+  line-height: 40px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.ca-lightbox__caption {
+  display: inline-block;
+  margin: 0;
+  padding: 10px;
+  color: #fff;
+  font-size: 120%;
+  line-height: 1.2;
+}
